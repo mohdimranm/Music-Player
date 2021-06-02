@@ -9,6 +9,10 @@ const progressContainer = document.querySelector('.progress-container');
 const title = document.querySelector('#title');
 const cover = document.querySelector('#cover');
 const audio = document.querySelector('#audio');
+const container = document.querySelector('.container');
+const volumeSlider = document.querySelector('.volume_slider');
+const volumeup = document.querySelector('#volumeUp');
+const volumeDown = document.querySelector('#volumeDown');
 
 const songs = [
   'i like me better',
@@ -27,6 +31,10 @@ const loadSong = song => {
     .join(' ');
   audio.src = `assets/music/${song}.mp3`;
   cover.src = `assets/img/${song}.jpg`;
+  container.style.backgroundImage = `linear-gradient(
+    rgba(255, 255, 255, 0.836),
+    rgba(255, 255, 255, 0.842)
+  ),url(assets/img/${song.replace(/\s/g, '\\$&')}.jpg)`;
 };
 
 const playSong = () => {
@@ -70,12 +78,26 @@ const updateProgress = e => {
   progress.style.width = `${progressPercent}%`;
 };
 
+const reduceVolume = () => {
+  audio.volume = 0;
+  volumeSlider.value = 0;
+};
+
+const incVolume = () => {
+  audio.volume = 1;
+  volumeSlider.value = 100;
+};
+
 function setProgress(e) {
   const width = this.clientWidth;
   const clickX = e.offsetX;
   const duration = audio.duration;
 
   audio.currentTime = (clickX / width) * duration;
+}
+
+function setVolume() {
+  audio.volume = volumeSlider.value / 100;
 }
 
 playBtn.addEventListener('click', () => {
@@ -92,6 +114,9 @@ prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 audio.addEventListener('timeupdate', updateProgress);
 progressContainer.addEventListener('click', setProgress);
+volumeSlider.addEventListener('change', setVolume);
+volumeDown.addEventListener('click', reduceVolume);
+volumeUp.addEventListener('click', incVolume);
 
 audio.addEventListener('ended', nextSong);
 

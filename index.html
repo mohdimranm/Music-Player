@@ -14,30 +14,42 @@
   </head>
   <body>
     <h1>Music Player</h1>
+    <div class="container">
+      <div class="music-container" id="music-container">
+        <div class="music-info">
+          <h4 id="title">Wildflower</h4>
+          <div class="progress-container" id="progress-container">
+            <div class="progress"></div>
+          </div>
+        </div>
 
-    <div class="music-container" id="music-container">
-      <div class="music-info">
-        <h4 id="title">Wildflower</h4>
-        <div class="progress-container" id="progress-container">
-          <div class="progress"></div>
+        <audio src="./assets/music/wildflower.mp3" id="audio"></audio>
+        <div class="img-container">
+          <img src="./assets/img/wildflower.jpg" alt="music-cover" id="cover" />
+        </div>
+
+        <div class="navigation">
+          <button class="action-btn" id="prev">
+            <i class="fas fa-backward"></i>
+          </button>
+          <button class="action-btn action-btn-big" id="play">
+            <i class="fas fa-play"></i>
+          </button>
+          <button class="action-btn" id="next">
+            <i class="fas fa-forward"></i>
+          </button>
         </div>
       </div>
-
-      <audio src="./assets/music/wildflower.mp3" id="audio"></audio>
-      <div class="img-container">
-        <img src="./assets/img/wildflower.jpg" alt="music-cover" id="cover" />
-      </div>
-
-      <div class="navigation">
-        <button class="action-btn" id="prev">
-          <i class="fas fa-backward"></i>
-        </button>
-        <button class="action-btn action-btn-big" id="play">
-          <i class="fas fa-play"></i>
-        </button>
-        <button class="action-btn" id="next">
-          <i class="fas fa-forward"></i>
-        </button>
+      <div class="slider_container">
+        <i class="fa fa-volume-down" id="volumeDown"></i>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="99"
+          class="volume_slider"
+        />
+        <i class="fa fa-volume-up" id="volumeUp"></i>
       </div>
     </div>
 
