@@ -26,7 +26,7 @@ const loadSong = song => {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
   audio.src = `assets/music/${song}.mp3`;
-  cover.src = `assests/img/${song}.jpg`;
+  cover.src = `assets/img/${song}.jpg`;
 };
 
 const playSong = () => {
